@@ -32,10 +32,9 @@ class DisplayNodeViewSet(APIView):
         dest = serializer.validated_data.get("node_to")
         graph = Edge.bfs(src, dest)
 
-        #Check if Nodes are not connected
+        # Check if Nodes are not connected
         if not graph:
             return Response({"message": "No path found"}, status=400)
 
         shortest_path = Edge.get_shortest_path(graph, src, dest)
         return Response({"path": shortest_path}, status=200)
-

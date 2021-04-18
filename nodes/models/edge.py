@@ -3,8 +3,10 @@ from nodes.models.node import Node
 
 
 class Edge(models.Model):
-    node_from = models.ForeignKey(Node, on_delete=models.CASCADE, related_name="node_from")
-    node_to = models.ForeignKey(Node, on_delete=models.CASCADE, related_name="node_to")
+    node_from = models.ForeignKey(
+        Node, on_delete=models.CASCADE, related_name="node_from")
+    node_to = models.ForeignKey(
+        Node, on_delete=models.CASCADE, related_name="node_to")
 
     class Meta:
         unique_together = ('node_from', 'node_to')
@@ -34,9 +36,9 @@ class Edge(models.Model):
             for neighbor in neighbors:
                 if neighbor not in visited:
                     queue[neighbor] = {"node": Node.objects.get(name=neighbor),
-                                        "prev": current_node}
+                                       "prev": current_node}
                     graph[neighbor] = {"node": Node.objects.get(name=neighbor),
-                                        "prev": current_node}
+                                       "prev": current_node}
             if current_node == dest.name:
                 return graph
             queue.pop(current_node)
@@ -44,6 +46,17 @@ class Edge(models.Model):
 
     @staticmethod
     def get_shortest_path(graph, src, dest):
+        """
+        get shortest path between src and dest notes
+        Args:
+            graph: represents node path where each element key is node name. 
+                    values are "prev":the prev node and "node": the node object
+            src: Node object
+            dest: Node object
+        Returns:
+            Dictionary or Boolean
+            list: list of comma separated nodes' names that represents the path between the given two nodes 
+        """
         last_node = dest.name
         path = [last_node]
         prev = last_node
