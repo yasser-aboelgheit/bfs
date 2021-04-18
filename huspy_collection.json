@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "d7e3363f-c60a-4a8e-b6fb-5d6d72a3d5da",
+		"name": "Huspy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "path",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/path?node_from=A&node_to=C",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"path"
+					],
+					"query": [
+						{
+							"key": "node_from",
+							"value": "A"
+						},
+						{
+							"key": "node_to",
+							"value": "C"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "connectNode",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"node_from\": \"B\",\n  \"node_to\":\"C\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/connectNode/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"connectNode",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
