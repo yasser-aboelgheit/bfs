@@ -1,5 +1,5 @@
-# bfs
-Notification service based on Django Rest framework
+# BFS
+A project using BFS algorithm to find shortest path between any two given nodes
 
 ## Technologies
 * Python3
