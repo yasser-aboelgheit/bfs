@@ -12,12 +12,16 @@ class Edge(models.Model):
     @staticmethod
     def bfs(src, dest):
         """
-        get graph of nodes
         get graph, by adding to queue all nodes and it's prev node
-        return index of last node
-        TODO lma aro7 n3mel el queue dictonary we ne return true ao false
+        Args:
+            src: Node object
+            dest: Node object
+        Returns:
+            Dictionary or Boolean
+            Dictionary: represents node path where each element key is node name. 
+                        values are "prev":the prev node and "node": the node object
+            Boolean: False, in case no path found
         """
-        
         visited = []
         queue = {src.name: {"node": src,
                             "prev": src}}

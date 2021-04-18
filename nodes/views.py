@@ -19,7 +19,7 @@ class RegisterNodeViewSet(generics.CreateAPIView):
                 return Response({"message": "This Edge is already existed"}, status=400)
             return Response({"message": str(e)}, status=400)
 
-        return Response({"message": "Node added successfully"}, status=201)
+        return Response({"message": "Nodes connected successfully"}, status=201)
 
 
 class DisplayNodeViewSet(APIView):
@@ -35,7 +35,7 @@ class DisplayNodeViewSet(APIView):
         #Check if Nodes are not connected
         if not graph:
             return Response({"message": "No path found"}, status=400)
-        # GET SHORTEST PATH, GO THROUGH ALL OLD NODES
+
         shortest_path = Edge.get_shortest_path(graph, src, dest)
         return Response({"path": shortest_path}, status=200)
 
