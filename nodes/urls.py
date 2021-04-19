@@ -6,4 +6,4 @@ urlpatterns = [
     path('path/', DisplayNodeViewSet.as_view(), name='path'),
 
 ]
-urlpatterns += [path('silk/', include('silk.urls', namespace='silk'))]
+urlpatterns += [path('silk/', include('silk.urls', namespace='silk-profiler'))]

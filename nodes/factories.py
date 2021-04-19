@@ -7,7 +7,7 @@ faker = Factory.create()
 class NodeFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Node
-    name = factory.Faker('text')
+    name = factory.Faker('name')
 
 
 class EdgeFactory(factory.django.DjangoModelFactory):
