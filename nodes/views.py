@@ -4,6 +4,7 @@ from .models import Node, Edge
 from .serializers import EdgeSerializer, PathSerializer
 from rest_framework.views import APIView
 from django.db.models import Q
+from silk.profiling.profiler import silk_profile
 
 
 class RegisterNodeViewSet(generics.CreateAPIView):
@@ -24,6 +25,7 @@ class RegisterNodeViewSet(generics.CreateAPIView):
 
 class DisplayNodeViewSet(APIView):
 
+    @silk_profile(name='DisplayNodeViewSet optimized')
     def get(self, request, format=None):
         serializer = PathSerializer(data=self.request.GET)
         if not serializer.is_valid():

@@ -21,8 +21,7 @@ class Node(models.Model):
                 neighbors: list of strings, each represents node name
         """
         neighbors = set()
-        edges = Edge.objects.filter(Q(node_from=self) | Q(node_to=self)).\
-            values_list('node_from__name', 'node_to__name')
+        edges = Edge.objects.filter(Q(node_from=self) | Q(node_to=self)).select_related("node_from", "node_to")
         for edge in edges:
-            neighbors.update([edge[0], edge[1]])
+            neighbors.update([edge.node_from, edge.node_to])
         return neighbors

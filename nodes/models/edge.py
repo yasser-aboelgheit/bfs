@@ -34,11 +34,11 @@ class Edge(models.Model):
             node = queue[current_node]["node"]
             neighbors = node.get_neighbors()
             for neighbor in neighbors:
-                if neighbor not in visited:
-                    queue[neighbor] = {"node": Node.objects.get(name=neighbor),
-                                       "prev": current_node}
-                    graph[neighbor] = {"node": Node.objects.get(name=neighbor),
-                                       "prev": current_node}
+                if neighbor.name not in visited:
+                    queue[neighbor.name] = {"node": neighbor,
+                                            "prev": current_node}
+                    graph[neighbor.name] = {"node": neighbor,
+                                            "prev": current_node}
             if current_node == dest.name:
                 return graph
             queue.pop(current_node)
@@ -47,7 +47,7 @@ class Edge(models.Model):
     @staticmethod
     def get_shortest_path(graph, src, dest):
         """
-        get shortest path between src and dest notes
+        get shortest path between src and dest nodes
         Args:
             graph: represents node path where each element key is node name. 
                     values are "prev":the prev node and "node": the node object
