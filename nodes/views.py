@@ -25,7 +25,7 @@ class RegisterNodeViewSet(generics.CreateAPIView):
 
 class DisplayNodeViewSet(APIView):
 
-    @silk_profile(name='DisplayNodeViewSet old')
+    @silk_profile(name='DisplayNodeViewSet optimized')
     def get(self, request, format=None):
         serializer = PathSerializer(data=self.request.GET)
         if not serializer.is_valid():
