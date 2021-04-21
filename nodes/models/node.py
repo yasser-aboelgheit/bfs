@@ -15,13 +15,15 @@ class Node(models.Model):
         from .edge import Edge
         """
             Get all neighbors of a given node
-            Args:
-                src: String represents name of the Node
             Returns:
-                neighbors: list of strings, each represents node name
+                neighbors: list of node objects
         """
-        neighbors = set()
-        edges = Edge.objects.filter(Q(node_from=self) | Q(node_to=self)).select_related("node_from", "node_to")
+        neighbors = []
+        edges = Edge.objects.filter(Q(node_from=self) | Q(
+            node_to=self)).select_related("node_from", "node_to")
         for edge in edges:
-            neighbors.update([edge.node_from, edge.node_to])
+            if edge.node_from != self:
+                neighbors.append(edge.node_from)
+                continue
+            neighbors.append(edge.node_to)
         return neighbors

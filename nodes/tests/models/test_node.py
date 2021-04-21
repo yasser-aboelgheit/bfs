@@ -14,4 +14,4 @@ class TestNodeModel(TestCase):
         Test get_neighbors function, should return node's neighbors
         """
         node1_neighbors = self.node1.get_neighbors()
-        self.assertEqual(node1_neighbors, {self.node1, self.node2})
+        self.assertEqual(node1_neighbors, [self.node2])

@@ -20,7 +20,7 @@ class Edge(models.Model):
             dest: Node object
         Returns:
             Dictionary or Boolean
-            Dictionary: represents node path where each element key is node name. 
+            Dictionary: represents node path where each element key is node name.
                         values are "prev":the prev node and "node": the node object
             Boolean: False, in case no path found
         """
@@ -49,13 +49,12 @@ class Edge(models.Model):
         """
         get shortest path between src and dest nodes
         Args:
-            graph: represents node path where each element key is node name. 
+            graph: represents node path where each element key is node name.
                     values are "prev":the prev node and "node": the node object
             src: Node object
             dest: Node object
         Returns:
-            Dictionary or Boolean
-            list: list of comma separated nodes' names that represents the path between the given two nodes 
+            list: list of comma separated nodes' names that represents the path between the given two nodes
         """
         last_node = dest.name
         path = [last_node]
